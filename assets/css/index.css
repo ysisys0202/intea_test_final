@@ -20,6 +20,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 100px;
 }
 .main-slide-nav-item {
   position: relative;
@@ -43,7 +44,7 @@
 .main-slide-nav-item:not(:last-of-type) {
   margin-right: 20px;
 }
-.main-slide-controls {
+.slide-controls {
   display: flex;
   justify-content: space-between;
   position: absolute;
@@ -51,9 +52,9 @@
   left: 0;
   z-index: 20;
   width: 100%;
-  transform: translateY(-50%);
+  transform: translateY(100%);
 }
-.main-slide-control-btn {
+.slide-control-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,12 +63,17 @@
   border-radius: 50%;
   background-color: #fff;
   font-size: 16px;
+  transition: visibility 200ms ease-in-out, opacity 200ms ease-in-out;
 }
-.main-slide-control-btn.is-prev {
+.slide-control-btn:disabled {
+  visibility: hidden;
+  opacity: 0;
+}
+.slide-control-btn.is-prev {
   transform: rotate(-180deg) translateX(43%);
   box-shadow: 3px -3px 3px rgba(0, 0, 0, 0.1);
 }
-.main-slide-control-btn.is-next {
+.slide-control-btn.is-next {
   transform: translateX(43%);
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
 }
@@ -76,19 +82,29 @@
   height: 520px;
   font-size: 20px;
   font-weight: 700;
+  transition: height 200ms ease-in-out;
+}
+.main-slide-item.is-center {
+  height: 560px;
+}
+.main-slide-item.is-center img {
+  object-fit: cover;
 }
 .main-slide-item img {
   width: auto;
   height: 100%;
 }
-.interior .content-body {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
+.interior-slide {
+  position: relative;
+}
+.interior .slide-controls {
+  transform: translateY(-75%);
+}
+.interior-slide-item {
+  padding: 4px 0 0 4px;
 }
 .interior-card {
   position: relative;
-  width: calc(25% - 20px);
 }
 .interior-card .badge {
   position: absolute;
@@ -197,8 +213,11 @@
 .style-card .card-info-item dt {
   margin-right: 4px;
 }
-.designer .slide-item {
-  width: calc(25% - 10px);
+.designer-slide {
+  position: relative;
+}
+.designer .slide-controls {
+  transform: translateY(-150%);
 }
 .designer-card .img-area {
   display: flex;
